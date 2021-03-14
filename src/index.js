@@ -1,12 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Home from './pages/Home.jsx';
+import App from './App.jsx';
 import reportWebVitals from './reportWebVitals';
 import "./index.css";
+import { Provider } from 'react-redux';
+import { persistStore } from 'redux-persist';
+import { PersistGate } from 'redux-persist/integration/react';
+import Modal from "react-modal";
+import store from './redux/store'
 
+Modal.setAppElement("#root");
+
+const persistor = persistStore(store);
 
 ReactDOM.render(
-      <Home/>,
+  <Provider store={store}>
+      <PersistGate persistor={persistor}>
+        <App/>
+      </PersistGate>
+  </Provider>,
   document.getElementById('root')
 );
 

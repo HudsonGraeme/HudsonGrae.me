@@ -4,23 +4,23 @@ import { css } from "styled-components/macro"; //eslint-disable-line
 import tw from "twin.macro";
 import styled from "styled-components";
 import "tailwindcss/dist/base.css";
-import "../index.css"
+import "../../index.css"
 
 // React
 import  React, {useState, useEffect} from 'react';
-import {isMobile, isDesktop, MobileView, BrowserView} from "react-device-detect";
+
 // Helpers
-import { useLongPress } from "../helpers/LongPress";
+import { useLongPress } from "../../helpers/LongPress";
 
 // Components
-import HeaderComponent from "../components/Header"
-import FooterComponent from "../components/Footer";
-import MobilePage from "./mobile/Home";
+import HeaderComponent from "../../components/mobile/Header"
+import FooterComponent from "../../components/mobile/Footer";
 
 // Tailwind Classes
+
 const Main = tw.div`mx-24 mt-32`;
 
-const Page = tw.div`bg-black w-screen h-screen bg-cover`;
+const Page = tw.div`bg-black w-screen h-full bg-cover`;
 
 const Content = tw.div`flex p-8 border-default bg-gray-800`;
 
@@ -28,12 +28,9 @@ const ContentLeft = tw.div`flex w-1/2 flex-col pr-8 border-r-default`;
 
 const ContentRight = tw.div`flex w-1/2 flex-col pl-8`;
 
-const ContentText = tw.div`text-white text-xl`;
+const ContentText = tw.p`text-white text-xl`;
 
 const Footer = tw(FooterComponent)`bottom-0 absolute`;
-
-// Static Props
-// TODO: Load from JSON
 
 
 const ContentLeftText = (
@@ -69,12 +66,10 @@ const ContentRightText = (
 
 
 
-const App = (() => {
+const MobileHome = (() => {
 
   return (
-    <div>
-    <BrowserView>
-      <Page>
+    <Page>
       <HeaderComponent/>
       <Main>
           <Content>
@@ -92,12 +87,7 @@ const App = (() => {
           </Main>
           <Footer/>
     </Page>
-    </BrowserView>
-    <MobileView>
-      <MobilePage/>
-    </MobileView>
-    </div>
   );
 });
 
-export default App;
+export default MobileHome;

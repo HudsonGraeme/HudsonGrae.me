@@ -6,6 +6,7 @@ import Dash from "../accessory/DashComponent";
 import LogoSVG from "../../images/LogoSvg.jsx";
 import LearningImg from "../../images/LearningBar.jsx";
 import  React, {useState, useEffect} from 'react';
+import {Modal} from 'react-modal';
 
 import Sammich from "../../images/Sammich";
 

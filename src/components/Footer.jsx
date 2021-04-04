@@ -7,7 +7,7 @@ import CoffeeIcon from "../images/LogoSvg";
 import GitHub from "../images/GitHub";
 import WwwComponent from "./accessory/WwwComponent";
 
-const FooterDiv = tw.div`align-middle bottom-0 absolute inline-flex bg-gray-900  py-8 flex w-full px-24 justify-between absolute mb-0 mt-16`;
+const FooterDiv = tw.div`align-middle inline-flex bg-gray-900 py-8 flex w-full px-24 justify-between`;
 
 const RightText = tw.h2`text-white flex inline text-right`;
 

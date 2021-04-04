@@ -6,6 +6,8 @@ import {connect} from 'react-redux';
 
 import HomePage from "./pages/Home.jsx";
 import PostsPage from "./pages/Posts.jsx";
+import PrivacyPage from "./pages/PrivacyPolicy.jsx"
+
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import {isMobile} from "react-device-detect";
@@ -16,6 +18,9 @@ function App() {
       <Switch>
         <Route path="/posts">
           <PostsPage />
+        </Route>
+        <Route path="/privacy">
+          <PrivacyPage />
         </Route>
         <Route path="/">
           <HomePage />

@@ -1,2 +1,2 @@
-# HudsonGrae.me
-My personal profile website
+# [HudsonGrae.me](https://hudsongrae.me)
+My custom personal profile website, built in React.

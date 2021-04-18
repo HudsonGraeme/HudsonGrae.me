@@ -1,4 +1,4 @@
-import  React, {useState, useEffect} from 'react';
+import  React from 'react';
 import tw from "twin.macro";
 
 export default React.memo(props => {

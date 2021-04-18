@@ -1,6 +1,5 @@
 import { css } from "styled-components/macro"; //eslint-disable-line
 import tw from "twin.macro";
-import styled from "styled-components";
 import "tailwindcss/dist/base.css";
 import "../index.css"
 import CoffeeIcon from "../images/LogoSvg";
@@ -20,8 +19,6 @@ const GHIcon = tw(GitHub)`hover:text-purple-500 fill-current hover:transition-al
 const Coffee = tw(CoffeeIcon)`inline mr-4`;
 
 const Icon = tw.span`mx-2`;
-
-const Spacer = tw.span`px-2`;
 
 const socialIcons = [
     <WwwComponent website={"carspotter.ca"}/>,

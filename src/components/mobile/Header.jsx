@@ -25,8 +25,6 @@ const NameLabel = tw.h1`select-none font-mono text-white text-2xl font-bold flex
 
 const Spacer = tw.span`inline-flex w-full`;
 
-const NavList = tw.div`bg-gray-900 w-full flex-col mt-0 mb-4 py-4 transition-all duration-200`;
-
 const NavLink = tw.a`select-none w-full text-white text-xl mx-auto bg-gray-900 text-center block py-1 whitespace-pre duration-500 transition-all
 hocus:border-b-default hocus:border-white
 `;

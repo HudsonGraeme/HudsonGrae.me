@@ -1,6 +1,5 @@
 import { css } from "styled-components/macro"; //eslint-disable-line
 import tw from "twin.macro";
-import styled from "styled-components";
 import "tailwindcss/dist/base.css";
 import Dash from "./accessory/DashComponent";
 import LogoSVG from "../images/LogoSvg.jsx";

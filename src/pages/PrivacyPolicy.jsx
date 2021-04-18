@@ -2,17 +2,13 @@
 // Style
 import { css } from "styled-components/macro"; //eslint-disable-line
 import tw from "twin.macro";
-import styled from "styled-components";
 import "tailwindcss/dist/base.css";
 import "../index.css"
 
 // Images
 
 // React
-import  React, {useState, useEffect} from 'react';
-
-// Helpers
-import { useLongPress } from "../helpers/LongPress";
+import  React from 'react';
 
 // Components
 import Header from "../components/Header";

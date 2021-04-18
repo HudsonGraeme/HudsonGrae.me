@@ -1,6 +1,5 @@
 import { css } from "styled-components/macro"; //eslint-disable-line
 import tw from "twin.macro";
-import styled from "styled-components";
 import "tailwindcss/dist/base.css";
 import "../../index.css"
 import CoffeeIcon from "../../images/LogoSvg";

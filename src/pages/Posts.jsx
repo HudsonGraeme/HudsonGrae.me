@@ -23,15 +23,11 @@ import Footer from "../components/Footer";
 
 const Page = tw.div`bg-black flex-col flex w-screen h-screen bg-cover`;
 
-const Body = tw.div`mx-24 my-16 flex-grow-default`;
+const Body = tw.div`mx-24 my-6 flex-grow-default`;
 
-const PageTitle = tw.h2`text-4xl bg-gray-800 pt-4 pl-4 border-b-default border-gray-200! py-8 text-white`;
+const PageTitle = tw.h2`text-2xl bg-gray-800 pl-4 border-b-default border-gray-200! py-4 pt-6 text-white`;
 
-
-
-const Posts = (() => {
-
-    return(
+const Posts = (() => (
         <Page>
             <Header/>
             <Body>
@@ -45,6 +41,6 @@ const Posts = (() => {
             <Footer/>
         </Page>
         )
-    });
+    );
 
 export default Posts;

@@ -6,8 +6,8 @@ import {connect} from 'react-redux';
 
 import HomePage from "./pages/Home.jsx";
 import PostsPage from "./pages/Posts.jsx";
-import PrivacyPage from "./pages/PrivacyPolicy.jsx"
-
+import PrivacyPage from "./pages/PrivacyPolicy.jsx";
+import ContactPage from "./pages/Contact.jsx";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import posts from "./data/Posts";
@@ -29,6 +29,9 @@ function App() {
         </Route>
         <Route path="/privacy">
           <PrivacyPage />
+        </Route>
+        <Route path="/contact">
+          <ContactPage/>
         </Route>
         <Route path="/">
           <HomePage />

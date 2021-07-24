@@ -30,7 +30,7 @@ const PopulistPage = (props) => {
         <>
         <Header/>
         <Page>
-            <TextView>            
+            <TextView>
                 <Title>{posts["populist"].content}</Title>
                 <InnerText>
                 {posts["populist"].content}

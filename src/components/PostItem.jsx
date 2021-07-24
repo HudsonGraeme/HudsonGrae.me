@@ -9,18 +9,18 @@ const Base = tw.div`flex flex-row text-white pr-0 my-8 border-default w-full bg-
 
 const Column = tw.div`flex flex-col`
 
-const IconColumn = tw(Column)`p-4`;
+const IconColumn = tw(Column)`ml-4 pl-4`;
 
 const TextColumn = tw(Column)`p-8 w-full`
 
-const Title = tw.h1`text-2xl mb-2 font-medium pb-2 border-b-2 flex-row`;
+const Title = tw.h1`text-2xl mb-2 font-medium pb-1 border-b-2 flex-row`;
 
 const Date = tw.h1`inline font-light text-xl`;
 
 const Description = tw.div`text-xl flex-wrap`;
 
 const ChevronColumn = tw(Column)`
-flex-grow-default w-32 text-left ml-2 
+flex-grow-default w-32 text-left ml-2
 hover:bg-gray-700 hover:cursor-pointer`;
 
 const Chevron = tw(chevronRight)`rounded-full p-2 m-auto w-12 h-12 `;
@@ -29,7 +29,7 @@ const PostItem = (props) => {
 
 
     const post = props.post;
-    const ContentImage = tw(post.icon)`h-full w-24`;
+    const ContentImage = tw(post.icon)`h-full w-20`;
 
     return(
         <Base>

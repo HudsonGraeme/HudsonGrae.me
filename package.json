@@ -1,6 +1,7 @@
 {
   "name": "HudsonGrae.me",
   "version": "0.1.0",
+  "homepage": "https://hudsongraeme.github.io/HudsonGrae.me/",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.1.4",

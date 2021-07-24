@@ -4,7 +4,7 @@ import coffeeIcon from "../images/LogoSvg";
 import populistPage from "../pages/posts/Populist";
 import pastWorksPage from "../pages/posts/PastWorks";
 
-const posts = 
+const posts =
 {
     "populist": {
         "title": "Populist",
@@ -14,7 +14,7 @@ const posts =
         "content": "All about the content man",
         "icon": populistIcon,
         "page": populistPage
-    }, 
+    },
     "past-works": {
         "title": "Past Works",
         "slug": "past-works",

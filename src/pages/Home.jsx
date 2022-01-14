@@ -18,8 +18,6 @@ import {MobileView, BrowserView} from "react-device-detect";
 // Components
 
 import PostIcon from "../components/accessory/PostIcon";
-import Header from "../components/Header"
-import Footer from "../components/Footer";
 import MobilePage from "./mobile/Home";
 
 // Tailwind Classes
@@ -65,7 +63,7 @@ const FindOnThisSite = [
 ]
 
 const ContentLeftText = (
-  <div>
+  <>
 
     <SectionTitle>Hello and thanks for stopping by.</SectionTitle>
     <ContentText>Some content you're likely to find on this site:</ContentText>
@@ -73,12 +71,12 @@ const ContentLeftText = (
     {FindOnThisSite.map((e, i) => {
       return <ContentText key={i}>{i+1}. {e}</ContentText>
     })}
-  </div>
+  </>
 );
 
 
 const ContentRightText = (
-  <div>
+  <>
     <SectionTitle>Recent Posts</SectionTitle>
     {Object.keys(posts).map((e, i) => {
       const post = posts[e];
@@ -92,7 +90,7 @@ const ContentRightText = (
         </PostActionButton>
         </RecentPost></>)
     })}
-  </div>
+  </>
 );
 
 
@@ -101,10 +99,9 @@ const ContentRightText = (
 const App = (() => {
 
   return (
-    <div>
+    <>
     <BrowserView>
       <Page>
-      <Header/>
       <Main>
           <Content>
             <ContentLeft>
@@ -119,13 +116,12 @@ const App = (() => {
             </ContentRight>
           </Content>
           </Main>
-          <Footer/>
     </Page>
     </BrowserView>
     <MobileView>
       <MobilePage/>
     </MobileView>
-    </div>
+    </>
   );
 });
 

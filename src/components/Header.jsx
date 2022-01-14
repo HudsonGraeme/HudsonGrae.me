@@ -4,7 +4,7 @@ import "tailwindcss/dist/base.css";
 import Dash from "./accessory/DashComponent";
 import LogoSVG from "../images/LogoSvg.jsx";
 import LearningImg from "../images/LearningBar.jsx";
-
+import ThreeDName from "./accessory/3DName";
 const Parent = tw.header`bg-gray-900 flex px-6 pt-4 pb-2 border-b-2 border-gray-600`;
 
 const HeaderLeft = tw.span`flex-row hover:cursor-pointer flex justify-between ml-8`;
@@ -52,7 +52,7 @@ const HeaderComponent = (({NavLinks = navLinks}) => {
         <HeaderLeft onClick={(e) => {window.location.href="/"}}>
         <LogoSVG css={tw`my-auto`} width="3em"/>
         <SpacerSm/>
-        <NameLabel>HudsonGraeme<Dash/></NameLabel>
+        <ThreeDName/>
         </HeaderLeft>
         <Spacer/>
         {NavLinks.map((link, index) => (

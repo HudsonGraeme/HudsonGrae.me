@@ -5,14 +5,8 @@ import tw from "twin.macro";
 import "tailwindcss/dist/base.css";
 import "../index.css"
 
-// Images
-
 // React
 import  React from 'react';
-
-// Components
-import Header from "../components/Header";
-import Footer from "../components/Footer";
 
 // Tailwind Classes
 const TextView = tw.div`mx-96 text-white h-full mt-12 pb-12 bg-gray-800 border-white border-default`;
@@ -22,14 +16,9 @@ const Page = tw.div`bg-black w-screen py-12 bg-cover`;
 const InputField = tw.input`bg-gray-700 border-default flex inline-flex px-2 py-1 mx-2 outline-none`;
 const Row = tw.div`mt-4 flex-row`;
 
-const privacyText = `Test`;
-
-
 const Posts = (() => {
 
     return(
-        <>
-        <Header/>
         <Page>
             <TextView>
                 <Title>Contact</Title>
@@ -44,8 +33,6 @@ const Posts = (() => {
                 </InnerText>
             </TextView>
         </Page>
-        <Footer/>
-        </>
     )
 });
 

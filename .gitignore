@@ -106,3 +106,5 @@ dist
 
 # MacOS useless files
 .DS_STORE
+
+build/

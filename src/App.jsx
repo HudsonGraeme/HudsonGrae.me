@@ -1,31 +1,30 @@
-import "tailwindcss/dist/base.css";
-import "./index.css";
-import React from "react";
-import { css } from "styled-components/macro"; //eslint-disable-line
-import {connect} from 'react-redux';
+import 'tailwindcss/dist/base.css';
+import './index.css';
 
-import HomePage from "./pages/First.jsx";
-import PostsPage from "./pages/Posts.jsx";
-import PrivacyPage from "./pages/PrivacyPolicy.jsx";
-import ContactPage from "./pages/Contact.jsx";
+import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import posts from "./data/Posts";
-
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+import ContactPage from './pages/Contact.jsx';
+import Footer from './components/Footer';
+import Header from './components/Header';
+import HomePage from './pages/First.jsx';
+import PostsPage from './pages/Posts.jsx';
+import PrivacyPage from './pages/PrivacyPolicy.jsx';
+import React from 'react';
+import { connect } from 'react-redux';
+import { css } from 'styled-components/macro'; //eslint-disable-line
+import posts from './data/Posts';
 
 function App() {
   return (
     <Router>
       <Header />
       <Switch>
-      {Object.keys(posts).map((e,i) => {
+        {Object.keys(posts).map((e, i) => {
           return (
-            <Route key={i} path={"/posts/"+e}>
+            <Route key={i} path={'/posts/' + e}>
               {e.page}
             </Route>
-          )
+          );
         })}
         <Route path="/posts">
           <PostsPage />
@@ -34,7 +33,7 @@ function App() {
           <PrivacyPage />
         </Route>
         <Route path="/contact">
-          <ContactPage/>
+          <ContactPage />
         </Route>
         <Route path="/">
           <HomePage />

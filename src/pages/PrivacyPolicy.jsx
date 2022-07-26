@@ -10,10 +10,6 @@ import "../index.css"
 // React
 import  React from 'react';
 
-// Components
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-
 // Tailwind Classes
 
 const TextView = tw.div`mx-96 text-white h-full mt-12 pb-12 bg-gray-800 border-white border-default`; 
@@ -112,8 +108,6 @@ spencer@carspotter.ca`;
 const Posts = (() => {
 
     return(
-        <>
-        <Header/>
         <Page>
             <TextView>            
                 <Title>Privacy Policy</Title>
@@ -123,9 +117,6 @@ const Posts = (() => {
             </TextView>
         </Page>
 
-        <Footer/>
-
-</>
         )
     });
 

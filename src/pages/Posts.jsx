@@ -6,18 +6,10 @@ import "tailwindcss/dist/base.css";
 import "../index.css"
 
 import posts from "../data/Posts"
-
 import PostItem from "../components/PostItem";
-
-// Images
 
 // React
 import React from 'react';
-
-
-// Components
-import Header from "../components/Header";
-import Footer from "../components/Footer";
 
 // Tailwind Classes
 
@@ -29,7 +21,6 @@ const PageTitle = tw.h2`text-2xl bg-gray-800 pl-4 border-b-default border-gray-2
 
 const Posts = (() => (
         <Page>
-            <Header/>
             <Body>
                 <PageTitle>
                     Recent Posts
@@ -38,7 +29,6 @@ const Posts = (() => (
                   return(<PostItem key={i} post={posts[e]}/>)
               })}
             </Body>
-            <Footer/>
         </Page>
         )
     );

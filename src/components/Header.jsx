@@ -1,9 +1,9 @@
-import { css } from "styled-components/macro"; //eslint-disable-line
-import tw from "twin.macro";
-import "tailwindcss/dist/base.css";
-import Dash from "./accessory/DashComponent";
-import LogoSVG from "../images/LogoSvg.jsx";
-import LearningImg from "../images/LearningBar.jsx";
+import { css } from 'styled-components/macro'; //eslint-disable-line
+import tw from 'twin.macro';
+import 'tailwindcss/dist/base.css';
+import Dash from './accessory/DashComponent';
+import LogoSVG from '../images/LogoSvg.jsx';
+import LearningImg from '../images/LearningBar.jsx';
 
 const Parent = tw.header`bg-gray-900 flex px-6 pt-4 pb-2 border-b-2 border-gray-600`;
 
@@ -25,47 +25,53 @@ const LearningBar = tw(LearningImg)`w-1/4 inline-block my-auto`;
 
 const ItalicText = tw.i`text-white inline-block select-none mx-8 my-auto`;
 
-
 const navLinks = [
-    {
-      label:'Profile',
-      location: 'profile',
-    },
-    {
-      label: "Past Works",
-      location: "projects",
-    },
-    {
-      label: "Contact",
-      location: "contact"
-    },
-    {
-      label: "Posts",
-      location: "posts"
-    }
-  ];
+  {
+    label: 'Profile',
+    location: 'profile',
+  },
+  {
+    label: 'Past Works',
+    location: 'projects',
+  },
+  {
+    label: 'Contact',
+    location: 'contact',
+  },
+  {
+    label: 'Posts',
+    location: 'posts',
+  },
+];
 
-const HeaderComponent = (({NavLinks = navLinks}) => {
-    return(
-        <div>
+const HeaderComponent = ({ NavLinks = navLinks }) => {
+  return (
+    <div>
       <Parent>
-        <HeaderLeft onClick={(e) => {window.location.href="/"}}>
-        <LogoSVG css={tw`my-auto`} width="3em"/>
-        <SpacerSm/>
-        <NameLabel>HudsonGraeme<Dash/></NameLabel>
+        <HeaderLeft
+          onClick={(e) => {
+            window.location.href = '/';
+          }}
+        >
+          <LogoSVG css={tw`my-auto`} width="3em" />
+          <SpacerSm />
         </HeaderLeft>
-        <Spacer/>
+        <Spacer />
         {NavLinks.map((link, index) => (
-            <NavLink href={link.location} key={index}>{link.label}</NavLink>
+          <NavLink href={link.location} key={index}>
+            {link.label}
+          </NavLink>
         ))}
       </Parent>
-         <Mid>
-             <LearningBar/>
-              <ItalicText>"Programming endeavours and much more fun when copious amounts of caffiene are involved"</ItalicText>
-        </Mid>
-        </div>
-    )
-});
-
+      <Mid>
+        <LearningBar />
+        <ItalicText>
+          "Programming endeavours and much more fun when copious amounts of
+          caffiene are involved"
+        </ItalicText>
+      </Mid>
+    </div>
+  );
+};
 
 export default HeaderComponent;

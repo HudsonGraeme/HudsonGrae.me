@@ -1,9 +1,9 @@
 ---
-Title: Test
-Description: A brief description of this test file
+Title: Variable Names
+Description: Variables should be as long as possible
 Author: HudsonGraeme
 Date: 2022-11-13
-Tags: React, JSX, Markdown
+Tags: React, Javascript, Minification
 ---
 
 Id proident dolor est deserunt dolor dolor ea ipsum consectetur cupidatat nulla adipisicing. Reprehenderit dolor laboris duis duis reprehenderit occaecat voluptate nulla. Nostrud sint ut et aliqua adipisicing nostrud aute ut fugiat voluptate elit qui.
@@ -26,7 +26,7 @@ Sunt labore do minim anim mollit ullamco mollit do aliquip officia tempor. Amet 
 
 Cupidatat ea esse quis excepteur minim exercitation dolor fugiat esse. Incididunt qui pariatur tempor veniam deserunt nostrud excepteur. Officia est enim sint elit ipsum non labore consectetur ut excepteur. Occaecat minim adipisicing ea voluptate laborum. Excepteur consequat est adipisicing elit occaecat in dolore minim ullamco dolore. Aliquip do fugiat proident voluptate fugiat et. Dolore anim adipisicing ipsum ea minim esse commodo aliquip amet quis enim reprehenderit adipisicing culpa.
 
-## What I think about test
+## What I think about variable names
 
 Some random articl
 

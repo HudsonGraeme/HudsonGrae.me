@@ -1,5 +1,5 @@
 {
-  "name": "HudsonGrae.me",
+  "name": "hudsongrae.me",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -25,10 +25,10 @@
   },
   "scripts": {
     "predeploy": "yarn build",
-    "deploy": "gh-pages -d build",
-    "start": "react-scripts start ",
+    "start": "concurrently --kill-others \"react-scripts start\" \"yarn run generate-manifest\"",
     "build": "react-scripts build",
-    "test": "react-scripts test"
+    "test": "react-scripts test",
+    "generate-manifest": "nodemon -e md --watch './public/content/*' ./generate-manifest.js"
   },
   "eslintConfig": {
     "extends": [
@@ -49,8 +49,10 @@
     ]
   },
   "devDependencies": {
+    "concurrently": "^7.5.0",
     "eslint": "^8.27.0",
     "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-react": "^7.31.10"
+    "eslint-plugin-react": "^7.31.10",
+    "nodemon": "^2.0.20"
   }
 }

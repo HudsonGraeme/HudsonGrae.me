@@ -10,6 +10,7 @@ import {
   VStack,
 } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
+import posts from '../common/manifest.json';
 
 const PostItem = ({ post }) => {
   return (
@@ -26,13 +27,13 @@ const PostItem = ({ post }) => {
         justify="space-between"
       >
         <VStack w="100%" align="start">
-          <Heading>{post.title}</Heading>
-          <Text>{post.metadata?.description}</Text>
+          <Heading>{post.Title}</Heading>
+          <Text>{post.Description}</Text>
         </VStack>
         <Button
           rightIcon={<ArrowForwardIcon />}
           as={Link}
-          to={post.path}
+          to={post.filename}
           color="white"
           bg="purple.500"
         >
@@ -55,7 +56,7 @@ const PostsPage = () => (
       gap={4}
       p={{ base: 4, lg: 16 }}
     >
-      {[].map((post, index) => (
+      {posts.map((post, index) => (
         <GridItem
           key={`${post.title}-${index}`}
           rounded="2xl"

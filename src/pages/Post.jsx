@@ -1,9 +1,11 @@
 import { useCallback, useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
-import { Heading, VStack } from '@chakra-ui/react';
+import { Box, Button, Heading, Stack, Text, VStack } from '@chakra-ui/react';
 import rehypeRaw from 'rehype-raw';
 import ChakraUIRenderer from 'chakra-ui-markdown-renderer';
+import { parseMarkdownWithYamlFormatter } from '../common/utils/markdownMetadataParser';
+import { ArrowBackIcon } from '@chakra-ui/icons';
 
 const PostPage = () => {
   const [post, setPost] = useState();
@@ -13,10 +15,10 @@ const PostPage = () => {
     try {
       const pathComponents = postPath.pathname.split('/');
       const lastPathComponent = pathComponents[pathComponents.length - 1];
-      const markdown = await fetch(`/content/${lastPathComponent}`).then(
+      const file = await fetch(`/content/${lastPathComponent}`).then(
         (response) => response.text()
       );
-      setPost(markdown);
+      setPost(parseMarkdownWithYamlFormatter(file));
     } catch (e) {
       console.error('Failed to load post', e);
     }
@@ -27,20 +29,53 @@ const PostPage = () => {
   }, [postPath]);
 
   return post ? (
-    <VStack
-      borderRadius={'2xl'}
-      bg="gray.900"
-      minH="100vh"
-      maxW="64rem"
-      w="100%"
-      align="start"
-    >
-      <ReactMarkdown
-        rehypePlugins={[rehypeRaw]}
-        components={ChakraUIRenderer()}
+    <VStack align="start" minH="100vh" maxW="64rem" w="100%">
+      <Button
+        color="white"
+        bg="purple.600"
+        leftIcon={<ArrowBackIcon />}
+        as={Link}
+        to="/posts"
       >
-        {post}
-      </ReactMarkdown>
+        Back to Posts
+      </Button>
+      <VStack
+        borderRadius={'2xl'}
+        bg="gray.900"
+        h="100%"
+        w="100%"
+        align="start"
+        overflow="hidden"
+      >
+        <Stack
+          bg="gray.700"
+          align={{ base: 'start', xl: 'end' }}
+          justify={{ base: 'start', xl: 'space-between' }}
+          direction={{ base: 'column', xl: 'row-reverse' }}
+          w="100%"
+          py={4}
+          px={{ base: 4, xl: 16 }}
+        >
+          <VStack align="end" h="100%" justify="space-between">
+            <Heading fontSize="lg">{post.metadata?.Tags}</Heading>
+            <Heading fontSize="lg">{post.metadata?.Date}</Heading>
+          </VStack>
+          <Heading fontSize="6xl">
+            {post.metadata?.Title}{' '}
+            <Text as="span" fontSize="xl">
+              by {post.metadata?.Author}
+            </Text>
+          </Heading>
+        </Stack>
+        <Box py={4} px={{ base: 4, xl: 16 }}>
+          <ReactMarkdown
+            rehypePlugins={[rehypeRaw]}
+            components={ChakraUIRenderer()}
+          >
+            {post?.markdown}
+          </ReactMarkdown>
+        </Box>
+      </VStack>
     </VStack>
   ) : (
     <VStack>

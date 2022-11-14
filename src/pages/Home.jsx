@@ -1,6 +1,7 @@
 import { ArrowForwardIcon } from '@chakra-ui/icons';
 import { Button, Heading, Text, VStack } from '@chakra-ui/react';
 import { useReducer, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 const Action = {
   ADD: 'ADD',
@@ -31,7 +32,7 @@ const HomePage = () => {
   }, []);
 
   return (
-    <VStack justify="center" h="100%">
+    <VStack justify="center" h="100%" minH="80vh">
       <Heading fontSize="8xl" fontWeight="bold">
         Hi.
       </Heading>
@@ -43,6 +44,8 @@ const HomePage = () => {
         bg="purple.600"
         rounded="full"
         size="lg"
+        as={Link}
+        to="/posts"
         rightIcon={<ArrowForwardIcon />}
       >
         View Posts

@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack://src/index.css"],"names":[],"mappings":"AAAA,UACI,kBACJ","file":"main.a6746b4d.chunk.css","sourcesContent":["html, body {\n    background: #121212;\n}\n/* I don't like this here but I'm not sure how to do this the proper tailwind way*/"]}

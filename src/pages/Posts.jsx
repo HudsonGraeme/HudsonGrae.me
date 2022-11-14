@@ -1,36 +1,74 @@
+import { ArrowForwardIcon } from '@chakra-ui/icons';
+import {
+  Button,
+  Flex,
+  GridItem,
+  Heading,
+  Image,
+  SimpleGrid,
+  Text,
+  VStack,
+} from '@chakra-ui/react';
+import { Link } from 'react-router-dom';
 
-// Style
-import { css } from "styled-components/macro"; //eslint-disable-line
-import tw from "twin.macro";
-import "tailwindcss/dist/base.css";
-import "../index.css"
+const PostItem = ({ post }) => {
+  return (
+    <VStack h="100%" w="100%" spacing={0} rounded="2xl" overflow="hidden">
+      <Flex h="75%" w="100%" bg="gray.700">
+        <Image src="" />
+      </Flex>
+      <VStack
+        bg="gray.900"
+        w="100%"
+        h="50%"
+        align="end"
+        p={4}
+        justify="space-between"
+      >
+        <VStack w="100%" align="start">
+          <Heading>{post.title}</Heading>
+          <Text>{post.metadata?.description}</Text>
+        </VStack>
+        <Button
+          rightIcon={<ArrowForwardIcon />}
+          as={Link}
+          to={post.path}
+          color="white"
+          bg="purple.500"
+        >
+          View Post
+        </Button>
+      </VStack>
+    </VStack>
+  );
+};
 
-import posts from "../data/Posts"
-import PostItem from "../components/PostItem";
+const PostsPage = () => (
+  <>
+    <Heading fontSize="4xl" m={4}>
+      Posts
+    </Heading>
+    <SimpleGrid
+      columns={{ base: 1, lg: 2, xl: 4 }}
+      w="100%"
+      h="100%"
+      gap={4}
+      p={{ base: 4, lg: 16 }}
+    >
+      {[].map((post, index) => (
+        <GridItem
+          key={`${post.title}-${index}`}
+          rounded="2xl"
+          bg="gray.800"
+          w="100%"
+          h="100%"
+          minH={96}
+        >
+          <PostItem post={post} />
+        </GridItem>
+      ))}
+    </SimpleGrid>
+  </>
+);
 
-// React
-import React from 'react';
-
-// Tailwind Classes
-
-const Page = tw.div`bg-black flex-col flex w-screen h-screen bg-cover`;
-
-const Body = tw.div`mx-24 my-6 flex-grow-default`;
-
-const PageTitle = tw.h2`text-2xl bg-gray-800 pl-4 border-b-default border-gray-200! py-4 pt-6 text-white`;
-
-const Posts = (() => (
-        <Page>
-            <Body>
-                <PageTitle>
-                    Recent Posts
-                </PageTitle>
-              {Object.keys(posts).map((e,i) => {
-                  return(<PostItem key={i} post={posts[e]}/>)
-              })}
-            </Body>
-        </Page>
-        )
-    );
-
-export default Posts;
+export default PostsPage;

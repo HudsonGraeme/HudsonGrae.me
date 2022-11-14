@@ -1,46 +1,28 @@
-import 'tailwindcss/dist/base.css';
-import './index.css';
-
-import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import ContactPage from './pages/Contact.jsx';
-import Footer from './components/Footer';
-import Header from './components/Header';
-import HomePage from './pages/First.jsx';
+import HomePage from './pages/Home.jsx';
 import PostsPage from './pages/Posts.jsx';
 import PrivacyPage from './pages/PrivacyPolicy.jsx';
-import React from 'react';
 import { connect } from 'react-redux';
-import { css } from 'styled-components/macro'; //eslint-disable-line
-import posts from './data/Posts';
+import Layout from './components/Layout';
+import PostPage from './pages/Post.jsx';
 
 function App() {
   return (
-    <Router>
-      <Header />
-      <Switch>
-        {Object.keys(posts).map((e, i) => {
-          return (
-            <Route key={i} path={'/posts/' + e}>
-              {e.page}
-            </Route>
-          );
-        })}
-        <Route path="/posts">
-          <PostsPage />
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route path="/posts">
+            <Route index element={<PostsPage />} />
+            <Route path="*" element={<PostPage />} />
+          </Route>
+          <Route path="/privacy" element={<PrivacyPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route index element={<HomePage />} />
         </Route>
-        <Route path="/privacy">
-          <PrivacyPage />
-        </Route>
-        <Route path="/contact">
-          <ContactPage />
-        </Route>
-        <Route path="/">
-          <HomePage />
-        </Route>
-      </Switch>
-      <Footer />
-    </Router>
+      </Routes>
+    </BrowserRouter>
   );
 }
 export default connect()(App);

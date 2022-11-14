@@ -29,7 +29,7 @@ const PostPage = () => {
   }, [postPath]);
 
   return post ? (
-    <VStack align="start" minH="100vh" maxW="64rem" w="100%">
+    <VStack align="start" minH="100vh" maxW="64rem" w="100%" py={8} spacing={8}>
       <Button
         color="white"
         bg="purple.600"
@@ -67,7 +67,7 @@ const PostPage = () => {
             </Text>
           </Heading>
         </Stack>
-        <Box py={4} px={{ base: 4, xl: 16 }}>
+        <Box py={4} pb={16} px={{ base: 4, xl: 16 }}>
           <ReactMarkdown
             rehypePlugins={[rehypeRaw]}
             components={ChakraUIRenderer()}

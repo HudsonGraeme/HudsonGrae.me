@@ -1,5 +1,5 @@
 import { ArrowForwardIcon } from '@chakra-ui/icons';
-import { Button, Heading, Text, VStack } from '@chakra-ui/react';
+import { Button, Heading, Stack, Text, VStack } from '@chakra-ui/react';
 import { useReducer, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -40,16 +40,21 @@ const HomePage = () => {
       <Text fontSize="4xl">
         I develop {adjectives[adjectiveIndex]} frontend experiences
       </Text>
-      <Button
-        bg="purple.600"
-        rounded="full"
-        size="lg"
-        as={Link}
-        to="/posts"
-        rightIcon={<ArrowForwardIcon />}
-      >
-        View Posts
-      </Button>
+      <Stack direction={{ base: 'column', lg: 'row' }}>
+        <Button
+          variant="primary"
+          rounded="full"
+          size="lg"
+          as={Link}
+          to="/posts"
+          rightIcon={<ArrowForwardIcon />}
+        >
+          View Posts
+        </Button>
+        <Button variant="secondary" size="lg" as={Link} to="/contact">
+          Get in Touch
+        </Button>
+      </Stack>
     </VStack>
   );
 };

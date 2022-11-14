@@ -4,6 +4,7 @@ import {
   Flex,
   GridItem,
   Heading,
+  HStack,
   Image,
   SimpleGrid,
   Text,
@@ -13,10 +14,18 @@ import { Link } from 'react-router-dom';
 import posts from '../common/manifest.json';
 
 const PostItem = ({ post }) => {
+  console.log(post);
   return (
-    <VStack h="100%" w="100%" spacing={0} rounded="2xl" overflow="hidden">
+    <VStack
+      h="100%"
+      w="100%"
+      spacing={0}
+      rounded="2xl"
+      overflow="hidden"
+      shadow="xl"
+    >
       <Flex h="75%" w="100%" bg="gray.700">
-        <Image src="" />
+        <Image src={`/images/${post.Image}`} h="100%" w="100%" />
       </Flex>
       <VStack
         bg="gray.900"
@@ -31,11 +40,10 @@ const PostItem = ({ post }) => {
           <Text>{post.Description}</Text>
         </VStack>
         <Button
+          variant="primary"
           rightIcon={<ArrowForwardIcon />}
           as={Link}
           to={post.filename}
-          color="white"
-          bg="purple.500"
         >
           View Post
         </Button>
@@ -46,11 +54,25 @@ const PostItem = ({ post }) => {
 
 const PostsPage = () => (
   <>
-    <Heading fontSize="4xl" m={4}>
-      Posts
-    </Heading>
+    <HStack
+      w="100%"
+      align="start"
+      px={{ base: 4, xl: 16 }}
+      mt={{ base: 4, xl: 8 }}
+    >
+      <Heading
+        fontSize="6xl"
+        rounded="xl"
+        bg="gray.900"
+        textAlign="left"
+        p={2}
+        px={16}
+      >
+        Posts
+      </Heading>
+    </HStack>
     <SimpleGrid
-      columns={{ base: 1, lg: 2, xl: 4 }}
+      columns={{ base: 1, lg: 2, '2xl': 3 }}
       w="100%"
       h="100%"
       gap={4}

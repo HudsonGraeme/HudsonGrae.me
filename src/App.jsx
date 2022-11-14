@@ -7,6 +7,7 @@ import PrivacyPage from './pages/PrivacyPolicy.jsx';
 import { connect } from 'react-redux';
 import Layout from './components/Layout';
 import PostPage from './pages/Post.jsx';
+import AboutPage from './pages/About.jsx';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           </Route>
           <Route path="/privacy" element={<PrivacyPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/about" element={<AboutPage />} />
           <Route index element={<HomePage />} />
         </Route>
       </Routes>

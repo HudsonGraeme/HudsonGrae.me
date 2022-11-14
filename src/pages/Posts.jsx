@@ -14,7 +14,6 @@ import { Link } from 'react-router-dom';
 import posts from '../common/manifest.json';
 
 const PostItem = ({ post }) => {
-  console.log(post);
   return (
     <VStack
       h="100%"

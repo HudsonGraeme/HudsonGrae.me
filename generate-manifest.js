@@ -36,7 +36,10 @@ try {
     };
   });
   console.log(metadata);
-  fs.writeFileSync('./src/common/manifest.json', JSON.stringify(metadata));
+  fs.writeFileSync(
+    './src/common/manifest.json',
+    JSON.stringify(metadata) + '\n'
+  );
 } catch (e) {
   console.error('Failed to generate manifest from content', e);
 }

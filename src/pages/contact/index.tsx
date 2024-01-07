@@ -12,13 +12,34 @@ import {
 	VStack,
 } from '@chakra-ui/react'
 import { SubmitPayload, useFormspark } from '@formspark/use-formspark'
-import { Field, Formik } from 'formik'
-import { isEmpty, max } from 'lodash'
+import { FastField, Formik } from 'formik'
+import { isEmpty } from 'lodash'
 import { useCallback } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 import * as Yup from 'yup'
-import { FORMSPARK_CONTACT_ID } from '../common/constants.ts'
+import { FORMSPARK_CONTACT_ID } from '../../common/constants.ts'
 
 // I ❤️ forms
+
+const getHelperTextForMessageField = (message: string) => {
+	const messageLength = message.length
+	if (messageLength > 512) {
+		return `${messageLength - 512} characters over the limit`
+	} else if (messageLength > 400) {
+		return `${512 - messageLength} characters remaining`
+	} else {
+		return ''
+	}
+}
+
+const getHelperTextColorForMessageField = (message: string) => {
+	const messageLength = message.length
+	if (messageLength > 512) {
+		return 'red.300'
+	} else {
+		return 'yellow.300'
+	}
+}
 
 const contactFormValidator = Yup.object().shape({
 	firstName: Yup.string()
@@ -54,16 +75,49 @@ const contactFormValidator = Yup.object().shape({
 		),
 })
 
+interface IPayload extends SubmitPayload {
+	firstName: string
+	lastName: string
+	email: string
+	message: string
+}
+
 const ContactPage = () => {
-	const [submit] = useFormspark({
+	const [submit, submitting] = useFormspark({
 		formId: FORMSPARK_CONTACT_ID,
 	})
+	const { state } = useLocation()
+	const navigate = useNavigate()
+
+	let initialFormValues: IPayload = {
+		firstName: '',
+		lastName: '',
+		email: '',
+		message: '',
+	}
+
+	if (!isEmpty(state)) {
+		initialFormValues = {
+			...initialFormValues,
+			...state,
+		}
+	}
 
 	const submitForm = useCallback(
-		async (values: SubmitPayload) => {
-			await submit(values)
+		async (values: IPayload) => {
+			try {
+				await submit(values)
+				navigate('/contact/success', {
+					state: values,
+				})
+			} catch (error) {
+				console.error(error)
+				navigate('/contact/error', {
+					state: values,
+				})
+			}
 		},
-		[submit]
+		[submit, navigate] // Added navigate to the dependency array
 	)
 
 	return (
@@ -88,14 +142,10 @@ const ContactPage = () => {
 							</VStack>
 						</HStack>
 						<Formik
-							initialValues={{
-								firstName: '',
-								lastName: '',
-								email: '',
-								message: '',
-							}}
+							initialValues={initialFormValues}
 							onSubmit={submitForm}
 							validationSchema={contactFormValidator}
+							validateOnMount={!isEmpty(state)}
 						>
 							{({ handleSubmit, errors, touched, values }) => (
 								<form onSubmit={handleSubmit}>
@@ -110,7 +160,7 @@ const ContactPage = () => {
 											<FormLabel htmlFor='firstName'>
 												First Name
 											</FormLabel>
-											<Field
+											<FastField
 												as={Input}
 												id='firstName'
 												name='firstName'
@@ -131,7 +181,7 @@ const ContactPage = () => {
 											<FormLabel htmlFor='lastName'>
 												Last Name
 											</FormLabel>
-											<Field
+											<FastField
 												as={Input}
 												placeholder='Pearseed'
 												id='lastName'
@@ -152,7 +202,7 @@ const ContactPage = () => {
 											<FormLabel htmlFor='email'>
 												Email
 											</FormLabel>
-											<Field
+											<FastField
 												as={Input}
 												placeholder='elon@x.com'
 												id='email'
@@ -174,7 +224,7 @@ const ContactPage = () => {
 											<FormLabel htmlFor='message'>
 												Message
 											</FormLabel>
-											<Field
+											<FastField
 												as={Textarea}
 												placeholder='Hello Hudson, I have a million dollar deal lined up for you. All you need to do is wire me $10,000 in Apple gift cards to cover the transaction costs...'
 												maxH={64}
@@ -191,44 +241,21 @@ const ContactPage = () => {
 													{errors.message}
 												</FormErrorMessage>
 												<FormHelperText
-													color={
-														values.message.length >
-														512
-															? 'red.300'
-															: 'yellow.300'
-													}
+													color={getHelperTextColorForMessageField(
+														values.message
+													)}
 												>
-													{values.message.length > 400
-														? values.message
-																.length > 512
-															? `${
-																	values
-																		.message
-																		.length -
-																	512
-															  } character${
-																	values
-																		.message
-																		.length -
-																		512 >
-																	1
-																		? 's'
-																		: ''
-															  } over the limit`
-															: `${max([
-																	512 -
-																		values
-																			.message
-																			.length,
-																	0,
-															  ])} characters remaining`
-														: ''}
+													{getHelperTextForMessageField(
+														values.message
+													)}
 												</FormHelperText>
 											</HStack>
 										</FormControl>
 										<Button
+											isLoading={submitting}
 											isDisabled={
-												isEmpty(touched) ||
+												(isEmpty(touched) &&
+													isEmpty(state)) ||
 												!isEmpty(errors)
 											}
 											type='submit'

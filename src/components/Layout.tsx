@@ -4,7 +4,7 @@ import Footer from './Footer'
 import Header from './Header'
 
 const Layout = () => (
-	<VStack w='100%' minH='100vh' bg='black'>
+	<VStack w='100%' minH='100vh' spacing={0}>
 		<Header />
 		<Container maxW={{ base: '100%', lg: '90%' }}>
 			<Outlet />

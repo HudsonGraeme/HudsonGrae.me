@@ -15,6 +15,7 @@
 		"@emotion/styled": "^11.11.0",
 		"@formspark/use-formspark": "^0.1.39",
 		"@mdx-js/rollup": "^2.3.0",
+		"date-fns": "^3.3.1",
 		"formik": "^2.4.5",
 		"framer-motion": "^6.5.1",
 		"lodash": "^4.17.21",

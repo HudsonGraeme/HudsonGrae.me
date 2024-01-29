@@ -8,6 +8,7 @@ import {
 	HStack,
 	Heading,
 	Input,
+	Text,
 	Textarea,
 	VStack,
 } from '@chakra-ui/react'
@@ -17,7 +18,7 @@ import { isEmpty } from 'lodash'
 import { useCallback } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import * as Yup from 'yup'
-import { FORMSPARK_CONTACT_ID } from '../../common/constants.ts'
+import { EASTER_EGG_1, FORMSPARK_CONTACT_ID } from '../../common/constants.ts'
 
 // I ❤️ forms
 
@@ -120,6 +121,39 @@ const ContactPage = () => {
 		[submit, navigate] // Added navigate to the dependency array
 	)
 
+	const handleGM = useCallback((event: React.MouseEvent<HTMLSpanElement>) => {
+		// Implement the "GM" raining effect with insets to prevent overflow
+		document.body.style.overflow = 'hidden'
+		const endTime = Date.now() + 10000 // 10 seconds from now
+		const interval = setInterval(() => {
+			if (Date.now() > endTime) {
+				clearInterval(interval)
+				document.body.style.overflow = 'unset'
+				return
+			}
+			const gm = document.createElement('span')
+			gm.innerText = 'GM'
+			gm.style.position = 'absolute'
+			// Calculate random positions with insets
+			const inset = 50 // pixels from the edge
+			const maxWidth = document.documentElement.clientWidth - inset
+			const maxHeight = document.documentElement.clientHeight - inset
+			gm.style.left = `${Math.random() * maxWidth + inset / 2}px`
+			gm.style.top = `${Math.random() * maxHeight + inset / 2}px`
+			gm.style.fontSize = '2rem'
+			gm.style.color = `hsl(${Math.floor(
+				Math.random() * 360
+			)}, 100%, 50%)`
+			gm.style.animation = 'fade 1s forwards'
+			document.body.appendChild(gm)
+
+			setTimeout(() => {
+				gm.remove()
+			}, 1000)
+			console.log('%cEaster Egg #2 activated 😎', EASTER_EGG_1)
+		}, 100)
+	}, [])
+
 	return (
 		<>
 			<VStack justify='center' minH='80vh' w='100%' pt={24}>
@@ -136,8 +170,16 @@ const ContactPage = () => {
 							<VStack align='start'>
 								<Heading>Send me a message</Heading>
 								<Heading color='whiteAlpha.600' fontSize='md'>
-									Messages that do not begin with "GM" will be
-									ignored.
+									Messages that do not begin with{' '}
+									<Text
+										as='span'
+										onClick={handleGM}
+										cursor='crosshair'
+										userSelect='none'
+									>
+										"GM"
+									</Text>{' '}
+									will be ignored.
 								</Heading>
 							</VStack>
 						</HStack>

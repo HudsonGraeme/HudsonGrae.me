@@ -2,9 +2,7 @@ import { Button, Stack, Text, VStack } from '@chakra-ui/react'
 import { get } from 'lodash'
 import { Link, useLocation } from 'react-router-dom'
 import { VIEWPORT_HEIGHT } from '../../common/constants'
-import TitleAndSubtitle, {
-	TitleSubtitleVariant,
-} from '../../components/TitleAndSubtitle'
+import TitleAndSubtitle from '../../components/TitleAndSubtitle'
 
 const ErrorPage = () => {
 	const { state } = useLocation()
@@ -22,7 +20,7 @@ const ErrorPage = () => {
 			<TitleAndSubtitle
 				title='Error.'
 				subtitle={sorryText}
-				variant={TitleSubtitleVariant.ERROR}
+				variant={TitleAndSubtitle.TitleSubtitleVariant.ERROR}
 			/>
 			<Text>
 				Your form submission couldn't be sent. Please try again.

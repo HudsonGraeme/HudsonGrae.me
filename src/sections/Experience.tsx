@@ -1,4 +1,6 @@
-import { VStack } from '@chakra-ui/react'
+import { HStack, VStack } from '@chakra-ui/react'
+import cards from '../common/experience.json'
+import Card, { ICardProps } from '../components/Card'
 import TitleAndSubtitle from '../components/TitleAndSubtitle'
 
 const Experience = () => {
@@ -12,9 +14,14 @@ const Experience = () => {
 			minH='100vh'
 		>
 			<TitleAndSubtitle
-				title='My Experience'
+				title='Professional Experience'
 				subtitle="What I've worked on"
 			/>
+			<HStack overflowX='scroll' maxW='full' align='start'>
+				{(cards as ICardProps[]).map((card) => (
+					<Card key={card.title} {...card} />
+				))}
+			</HStack>
 		</VStack>
 	)
 }

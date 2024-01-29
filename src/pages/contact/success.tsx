@@ -2,9 +2,7 @@ import { Button, Stack, Text, VStack } from '@chakra-ui/react'
 import { get } from 'lodash'
 import { Link, useLocation } from 'react-router-dom'
 import { VIEWPORT_HEIGHT } from '../../common/constants'
-import TitleAndSubtitle, {
-	TitleSubtitleVariant,
-} from '../../components/TitleAndSubtitle'
+import TitleAndSubtitle from '../../components/TitleAndSubtitle'
 
 const SuccessPage = () => {
 	const { state } = useLocation()
@@ -27,7 +25,7 @@ const SuccessPage = () => {
 			<TitleAndSubtitle
 				title='Success.'
 				subtitle={thanksText}
-				variant={TitleSubtitleVariant.SUCCESS}
+				variant={TitleAndSubtitle.TitleSubtitleVariant.SUCCESS}
 			/>
 			<Text>{backToYouText}</Text>
 			<Stack direction={{ base: 'column', lg: 'row' }}>

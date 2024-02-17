@@ -44,23 +44,24 @@ const Card = ({ title, start, end, description, feature }: ICardProps) => {
 
 	return (
 		<Stack
-			direction={{ base: 'column-reverse', md: 'row' }}
+			direction={{ base: 'column-reverse', lg: 'row' }}
 			spacing={8}
-			align={{ base: 'center', md: 'start' }}
+			align={{ base: 'center', lg: 'start' }}
 			justify='space-between'
 			rounded='xl'
 			w='100%'
 			p={{ base: 8, md: 16 }}
 			bg='whiteAlpha.200'
 			minH='container.sm'
-			minW={{ base: '90%', md: '80%' }}
+			minW={{ base: '90%', lg: '80%' }}
 		>
 			<VStack
 				justify='start'
 				align='start'
 				h='full'
+				w='full'
 				spacing={8}
-				maxW={{ base: 'full', md: '40%' }}
+				maxW={{ base: 'full', md: '90%' }}
 			>
 				<TitleAndSubtitle
 					title={title}
@@ -75,42 +76,68 @@ const Card = ({ title, start, end, description, feature }: ICardProps) => {
 
 				{renderedDescription}
 			</VStack>
-			<Fade in>
-				<Flex h='full' aspectRatio={1}>
-					{typeof feature === 'string' ? (
-						<Image
-							key={imgKey}
-							src={feature}
-							alt={title}
-							onError={(e) => {
-								setFeatureError(true)
-							}}
-							fallback={
-								<Center h='full' w='lg' bg='whiteAlpha.200'>
-									{featureError ? (
-										<VStack spacing={4}>
-											<Text fontWeight={'bold'}>
-												Image failed to load
-											</Text>
-											<Button
-												onClick={() =>
-													setImgKey(uniqueId())
-												}
-											>
-												Retry
-											</Button>
-										</VStack>
-									) : (
-										<Spinner />
-									)}
-								</Center>
-							}
-						/>
-					) : (
-						feature
-					)}
-				</Flex>
-			</Fade>
+
+			<Flex
+				h='full'
+				w='full'
+				flexGrow={1}
+				justify='stretch'
+				align='stretch'
+				aspectRatio={1}
+				maxH='lg'
+			>
+				<Fade
+					in
+					style={{
+						width: '100%',
+						height: '100%',
+						display: 'flex',
+						aspectRatio: 1,
+						flexGrow: 1,
+					}}
+				>
+					<Flex justify='end' h='full' w='full'>
+						{typeof feature === 'string' ? (
+							<Image
+								key={imgKey}
+								src={feature}
+								aspectRatio={1}
+								h='full'
+								alt={title}
+								onError={(e) => {
+									setFeatureError(true)
+								}}
+								fallback={
+									<Center
+										h='full'
+										flex={1}
+										bg='whiteAlpha.200'
+									>
+										{featureError ? (
+											<VStack spacing={4}>
+												<Text fontWeight={'bold'}>
+													Image failed to load
+												</Text>
+												<Button
+													onClick={() =>
+														setImgKey(uniqueId())
+													}
+												>
+													Retry
+												</Button>
+											</VStack>
+										) : (
+											<Spinner />
+										)}
+									</Center>
+								}
+							/>
+						) : (
+							feature
+						)}
+					</Flex>
+				</Fade>
+			</Flex>
 		</Stack>
 	)
 }

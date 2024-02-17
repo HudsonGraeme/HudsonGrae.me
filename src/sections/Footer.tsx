@@ -14,10 +14,6 @@ let links: IFooterLink[] = [
 	},
 	{
 		name: 'IPFS',
-		href: 'ipfs://QmcgLcWX7GReZFYzXevWaGUpCYNX8U4rZerGWPMsVLfpFP',
-	},
-	{
-		name: 'IPNS',
 		href: 'ipns://k51qzi5uqu5dkivw1ezrzlpf6naa09ohwk269mzoleigr2ia9ftq7ahcrhf85l',
 	},
 	{

@@ -61,6 +61,7 @@ const Header = () => {
 							key={`${link.href}-${index}`}
 							variant='unstyled'
 							fontSize='md'
+							target='_blank'
 							fontWeight='normal'
 							icon={
 								typeof link.image === 'string' ? (

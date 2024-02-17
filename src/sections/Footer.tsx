@@ -3,10 +3,11 @@ import { Button, HStack, Link } from '@chakra-ui/react'
 
 interface IFooterLink {
 	name: string
+	disabled?: boolean
 	href: string
 }
 
-const Links: IFooterLink[] = [
+let links: IFooterLink[] = [
 	{
 		name: 'HTTP',
 		href: 'https://hudsongrae.me',
@@ -25,18 +26,24 @@ const Links: IFooterLink[] = [
 	},
 ]
 
+links = links.map((link) => {
+	link.disabled = window.location.href.includes(link.href)
+	return link
+})
+
 const Footer = () => {
 	return (
 		<HStack overflow='hidden' maxW='100vw'>
-			{Links.map(({ name, href }: IFooterLink) => (
+			{links.map(({ name, href, disabled }: IFooterLink) => (
 				<Button
 					px={2}
 					target='_blank'
 					variant='ghost'
 					as={Link}
 					rightIcon={<ExternalLinkIcon />}
-					isDisabled={window.location.href.includes(href)}
+					isDisabled={disabled}
 					href={href}
+					onClick={disabled ? (e) => e.preventDefault() : undefined}
 					key={name}
 				>
 					{name}

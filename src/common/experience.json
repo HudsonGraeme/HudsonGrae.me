@@ -4,18 +4,18 @@
 		"start": "2020-03",
 		"end": "2023-03",
 		"description": "My initial professional journey in software development began in the aviation industry, where I was part of a compact team responsible for the development, testing, and deployment of mission-critical systems. My role involved implementing essential features using FAA systems, enhancing the core application infrastructure, and improving frontend performance, in addition to providing on-call triage support. This early exposure to critical systems has equipped me with a solid foundation in rapid troubleshooting and effective team communication. Being part of a small team also offered me the opportunity to gain experience in a broad spectrum of technologies, including devops, embedded systems, web development, and mobile application development. This exposure allowed me to deepen my understanding of various languages, frameworks, and tools such as AWS, React, Swift, Python, Docker, Java, and more.",
-		"feature": "https://ipfs.hudsongrae.me/ce47f045-ea85-4e98-b559-2eb0b4f511f3-bucket/airport.png"
+		"feature": "https://ipfs.hudsongrae.me/airport.png"
 	},
 	{
 		"title": "Blockchain",
 		"start": "2023-03",
 		"description": "Advancing into the blockchain realm, I've taken on pivotal roles in the development and deployment of full-stack applications that leverage blockchain technology. My foray into decentralized application (dApp) development has enriched my experience with prevalent blockchain frameworks such as WAGMI, ethers, and web3.js. This experience has been instrumental in understanding the intricacies of hashing methods, and the nuances of on-chain and off-chain interactions. Additionally, my journey into Solidity smart contract development has been profound, utilizing tools like Truffle, Ganache, and Hardhat to navigate the complete lifecycle of smart contract development—from conception and local testing to mainnet deployment.",
-		"feature": "https://ipfs.hudsongrae.me/ce47f045-ea85-4e98-b559-2eb0b4f511f3-bucket/blockchain.png"
+		"feature": "https://ipfs.hudsongrae.me/blockchain.png"
 	},
 	{
 		"title": "Artificial Intelligence",
 		"start": "2023-09",
 		"description": "I've been passionate about AI for some time, and was lucky to have an opportunity to work in the space. One of my first items to tackle involved deploying and managing various generative models, including text, video, and audio, using cutting-edge technologies like PyTorch, Cog, Diffusers, and Transformers. My achievements include the deployment of diffusion models to hosted services, training and fine-tuning NanoGPT models for optimized performance, and developing benchmarking software using MNIST models. Despite being new to AI, I rapidly scaled the learning curve, mastering complex concepts and effectively reducing the size and improving the performance of NanoGPT models. Collaborating closely with external teams, I successfully addressed and resolved third-party integration issues, contributing significantly to a project that has now achieved over 500k successful generations in production. This journey has taken me from a beginner to a proficient AI developer, capable of training models and diagnosing intricate issues within their layers.",
-		"feature": "https://ipfs.hudsongrae.me/ce47f045-ea85-4e98-b559-2eb0b4f511f3-bucket/ai.png"
+		"feature": "https://ipfs.hudsongrae.me/ai.png"
 	}
 ]

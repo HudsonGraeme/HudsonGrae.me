@@ -6,9 +6,15 @@ import HomePage from './pages/Home'
 import ErrorPage from './pages/contact/error'
 import SuccessPage from './pages/contact/success'
 
+const isIPFSOrIPNS =
+	window.location.href.includes('ipfs') ||
+	window.location.href.includes('ipns')
+
 function App() {
 	return (
-		<BrowserRouter>
+		<BrowserRouter
+			{...(isIPFSOrIPNS ? { basename: window.location.pathname } : {})}
+		>
 			<Routes>
 				<Route path='/' element={<Layout />}>
 					<Route path='contact'>

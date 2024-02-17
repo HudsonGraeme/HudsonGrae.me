@@ -1,13 +1,16 @@
 import {
+	Button,
 	Center,
 	Fade,
 	Flex,
+	Image,
 	Spinner,
 	Stack,
 	Text,
 	VStack,
 } from '@chakra-ui/react'
-import { ReactNode, useEffect, useState } from 'react'
+import { uniqueId } from 'lodash'
+import { ReactNode, useState } from 'react'
 import TitleAndSubtitle from './TitleAndSubtitle'
 
 export interface ICardProps {
@@ -32,55 +35,12 @@ const calculateTimeDifference = (start: string, end?: string) => {
 }
 
 const Card = ({ title, start, end, description, feature }: ICardProps) => {
-	const [featureLoading, setFeatureLoading] = useState(true)
-	const [renderedFeature, setRenderedFeature] = useState<ReactNode>(feature)
-
+	const [featureError, setFeatureError] = useState(false)
+	const [imgKey, setImgKey] = useState(uniqueId())
 	let renderedDescription: ReactNode = description
 	if (typeof description === 'string') {
 		renderedDescription = <Text>{description}</Text>
 	}
-
-	useEffect(() => {
-		if (typeof renderedFeature !== 'string') {
-			setRenderedFeature(feature)
-			setFeatureLoading(false)
-			return
-		}
-		import(renderedFeature)
-			.then((module) => {
-				setRenderedFeature(
-					<Fade in>
-						<Flex
-							flex={1}
-							w={{ base: '64', md: 'lg' }}
-							h={{ base: '64', md: 'lg' }}
-							bgSize='contain'
-							bgPos='center'
-							// css={{
-							// 	'background-image': `url(${bg})`,
-							// }}
-							bgRepeat='no-repeat'
-							boxShadow='0 0 1rem 1rem rgba(20,20,20,1) inset'
-							justify='center'
-							align='center'
-						>
-							<Flex
-								w='90%'
-								h='90%'
-								bgPos='center'
-								bgSize='contain'
-								css={{
-									'background-image': `url(${module.default})`,
-								}}
-								bgRepeat='no-repeat'
-								rounded='xl'
-							/>
-						</Flex>
-					</Fade>
-				)
-			})
-			.finally(() => setFeatureLoading(false))
-	}, [feature])
 
 	return (
 		<Stack
@@ -117,12 +77,37 @@ const Card = ({ title, start, end, description, feature }: ICardProps) => {
 			</VStack>
 			<Fade in>
 				<Flex h='full' aspectRatio={1}>
-					{featureLoading ? (
-						<Center h='full' w='lg'>
-							<Spinner />
-						</Center>
+					{typeof feature === 'string' ? (
+						<Image
+							key={imgKey}
+							src={feature}
+							alt={title}
+							onError={(e) => {
+								setFeatureError(true)
+							}}
+							fallback={
+								<Center h='full' w='lg' bg='whiteAlpha.200'>
+									{featureError ? (
+										<VStack spacing={4}>
+											<Text fontWeight={'bold'}>
+												Image failed to load
+											</Text>
+											<Button
+												onClick={() =>
+													setImgKey(uniqueId())
+												}
+											>
+												Retry
+											</Button>
+										</VStack>
+									) : (
+										<Spinner />
+									)}
+								</Center>
+							}
+						/>
 					) : (
-						renderedFeature
+						feature
 					)}
 				</Flex>
 			</Fade>

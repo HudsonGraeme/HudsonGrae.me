@@ -23,7 +23,7 @@ let links: IFooterLink[] = [
 ]
 
 links = links.map((link) => {
-	link.disabled = window.location.href.includes(link.href)
+	link.disabled = window.location.href.includes(link.href.split('://')[1])
 	return link
 })
 

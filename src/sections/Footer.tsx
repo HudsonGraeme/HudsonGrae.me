@@ -31,6 +31,7 @@ const Footer = () => {
 			{Links.map(({ name, href }: IFooterLink) => (
 				<Button
 					px={2}
+					target='_blank'
 					variant='ghost'
 					as={Link}
 					rightIcon={<ExternalLinkIcon />}

@@ -35,6 +35,7 @@ const Footer = () => {
 					variant='ghost'
 					as={Link}
 					rightIcon={<ExternalLinkIcon />}
+					isDisabled={window.location.href.includes(href)}
 					href={href}
 					key={name}
 				>

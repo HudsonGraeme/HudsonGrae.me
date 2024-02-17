@@ -4,7 +4,7 @@ import { defineConfig } from 'vite'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-	root: './',
+	root: '',
 	plugins: [
 		{ enforce: 'pre', ...mdx(/* jsxImportSource: …, otherOptions… */) },
 		react(),

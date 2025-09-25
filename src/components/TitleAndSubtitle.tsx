@@ -37,11 +37,11 @@ const TitleAndSubtitle = ({
 				placement='top'
 				isDisabled={variant !== TitleSubtitleVariant.ACTIVE}
 			>
-				<Heading color={subtitleColor} fontSize={sm ? 'xl' : '2xl'}>
+				<Heading color={subtitleColor} fontSize={sm ? 'sm' : 'md'}>
 					{subtitle}
 				</Heading>
 			</Tooltip>
-			<Heading fontSize={sm ? '3xl' : '4xl'}>{title}</Heading>
+			<Heading fontSize={sm ? 'xl' : '2xl'}>{title}</Heading>
 		</VStack>
 	)
 }

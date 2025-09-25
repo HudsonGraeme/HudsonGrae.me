@@ -121,7 +121,7 @@ const ContactPage = () => {
 		[submit, navigate] // Added navigate to the dependency array
 	)
 
-	const handleGM = useCallback((event: React.MouseEvent<HTMLSpanElement>) => {
+	const handleGM = useCallback((_event: React.MouseEvent<HTMLSpanElement>) => {
 		// Implement the "GM" raining effect with insets to prevent overflow
 		document.body.style.overflow = 'hidden'
 		const endTime = Date.now() + 10000 // 10 seconds from now

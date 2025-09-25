@@ -6,30 +6,39 @@
 	"scripts": {
 		"dev": "vite",
 		"build": "tsc && vite build",
-		"preview": "vite preview"
+		"preview": "vite preview",
+		"lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
 	},
 	"dependencies": {
-		"@chakra-ui/icons": "^2.1.1",
-		"@chakra-ui/react": "^2.8.2",
-		"@emotion/react": "^11.11.3",
-		"@emotion/styled": "^11.11.0",
-		"@formspark/use-formspark": "^0.1.39",
+		"@chakra-ui/icons": "^2.2.4",
+		"@chakra-ui/react": "^2.10.9",
+		"@emotion/react": "^11.14.0",
+		"@emotion/styled": "^11.14.1",
+		"@formspark/use-formspark": "^0.1.42",
 		"@mdx-js/rollup": "^2.3.0",
-		"date-fns": "^3.3.1",
-		"formik": "^2.4.5",
+		"date-fns": "^3.6.0",
+		"formik": "^2.4.6",
 		"framer-motion": "^6.5.1",
 		"lodash": "^4.17.21",
-		"react": "^18.2.0",
-		"react-dom": "^18.2.0",
-		"react-router-dom": "^6.21.1",
+		"react": "^18.3.1",
+		"react-dom": "^18.3.1",
+		"react-router-dom": "^6.30.1",
 		"yup": "^0.32.11"
 	},
 	"devDependencies": {
-		"@types/lodash": "^4.14.202",
-		"@types/react": "^18.2.47",
-		"@types/react-dom": "^18.2.18",
+		"@eslint/js": "^9.36.0",
+		"@types/lodash": "^4.17.20",
+		"@types/react": "^18.3.24",
+		"@types/react-dom": "^18.3.7",
+		"@typescript-eslint/eslint-plugin": "^8.44.1",
+		"@typescript-eslint/parser": "^8.44.1",
 		"@vitejs/plugin-react": "^3.1.0",
-		"typescript": "^5.3.3",
-		"vite": "^4.5.1"
+		"eslint": "^9.36.0",
+		"eslint-plugin-react": "^7.37.5",
+		"eslint-plugin-react-hooks": "^5.2.0",
+		"eslint-plugin-react-refresh": "^0.4.21",
+		"globals": "^16.4.0",
+		"typescript": "^5.9.2",
+		"vite": "^4.5.14"
 	}
 }

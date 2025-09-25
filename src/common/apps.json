@@ -1,0 +1,14 @@
+[
+	{
+		"title": "dstatus.rs",
+		"description": "Custom Discord Rich Presence daemon with GUI and TUI configuration. Features automatic reloading, template system, custom buttons, and cross-platform desktop app built with Rust and Tauri.",
+		"feature": "https://static.hudsongrae.me/dstatus.png",
+		"url": "https://dstatus.rs"
+	},
+	{
+		"title": "Based Online Stopwatch",
+		"description": "Free, comprehensive online timer toolkit with no ads or premium paywalls. Features stopwatch, countdown timer, race timers, classroom tools, and random generators. Supports 12 languages and works offline.",
+		"feature": "https://static.hudsongrae.me/based.png",
+		"url": "https://based-online-stopwatch.com"
+	}
+]

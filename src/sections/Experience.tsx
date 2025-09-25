@@ -17,7 +17,7 @@ const Experience = () => {
 				title='Professional Experience'
 				subtitle="What I've worked on"
 			/>
-			<HStack overflowX='scroll' maxW='full' align='start'>
+			<HStack overflowX='auto' maxW='full' align='start' spacing={6} sx={{'&::-webkit-scrollbar': { display: 'none' }, scrollbarWidth: 'none'}}>
 				{(cards as ICardProps[]).map((card) => (
 					<Card key={card.title} {...card} />
 				))}

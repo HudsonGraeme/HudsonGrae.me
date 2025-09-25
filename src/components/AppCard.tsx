@@ -1,9 +1,11 @@
+import { ArrowUpIcon } from '@chakra-ui/icons'
 import {
 	Button,
 	Center,
 	Fade,
 	Flex,
 	Image,
+	Link,
 	Spinner,
 	Stack,
 	Text,
@@ -13,33 +15,19 @@ import { uniqueId } from 'lodash'
 import { ReactNode, useState } from 'react'
 import TitleAndSubtitle from './TitleAndSubtitle'
 
-export interface ICardProps {
+export interface IAppCardProps {
 	title: string
-	start: string
-	end: string
 	description: string | ReactNode
 	feature: string | ReactNode
+	url: string
 }
 
-const calculateTimeDifference = (start: string, end?: string) => {
-	const endDate = end ? new Date(end) : new Date()
-	const diff = Math.abs(new Date(start).getTime() - endDate.getTime())
-	const years = Math.floor(diff / (1000 * 60 * 60 * 24 * 365))
-	const months = Math.floor(
-		(diff % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24 * 30)
-	)
-
-	return years > 0
-		? `${years}${end ? '' : '+'} Year${years > 1 ? 's' : ''}`
-		: `${months}${end ? '' : '+'} Month${months > 1 ? 's' : ''}`
-}
-
-const Card = ({ title, start, end, description, feature }: ICardProps) => {
+const AppCard = ({ title, description, feature, url }: IAppCardProps) => {
 	const [featureError, setFeatureError] = useState(false)
 	const [imgKey, setImgKey] = useState(uniqueId())
 	let renderedDescription: ReactNode = description
 	if (typeof description === 'string') {
-		renderedDescription = <Text>{description}</Text>
+		renderedDescription = <Text fontSize='xs'>{description}</Text>
 	}
 
 	return (
@@ -56,26 +44,35 @@ const Card = ({ title, start, end, description, feature }: ICardProps) => {
 			flex='none'
 		>
 			<VStack
-				justify='start'
+				justify='space-between'
 				align='start'
 				h='full'
 				w='full'
 				spacing={4}
-				overflow='hidden'
 				maxW={{ base: 'full', md: '90%' }}
 			>
-				<TitleAndSubtitle
-					title={title}
-					subtitle={calculateTimeDifference(start, end)}
-					sm
-					variant={
-						end
-							? undefined
-							: TitleAndSubtitle.TitleSubtitleVariant.ACTIVE
-					}
-				/>
+				<VStack spacing={2} align='start' flex={1}>
+					<TitleAndSubtitle title={title} subtitle='App' sm />
+					{renderedDescription}
+				</VStack>
 
-				{renderedDescription}
+				<Button
+					as={Link}
+					href={url}
+					isExternal
+					target='_blank'
+					size='md'
+					bg='black'
+					color='white'
+					borderRadius='md'
+					px={6}
+					py={3}
+					_hover={{ textDecoration: 'none' }}
+					textDecoration='none'
+					rightIcon={<ArrowUpIcon transform="rotate(45deg)" />}
+				>
+					Launch
+				</Button>
 			</VStack>
 
 			<Flex
@@ -85,7 +82,7 @@ const Card = ({ title, start, end, description, feature }: ICardProps) => {
 				justify='center'
 				align='center'
 				overflow='hidden'
-				rounded='md'
+				rounded='3xl'
 			>
 				<Fade
 					in
@@ -144,4 +141,4 @@ const Card = ({ title, start, end, description, feature }: ICardProps) => {
 	)
 }
 
-export default Card
+export default AppCard

@@ -41,7 +41,7 @@ const Intro = () => {
 		(event: React.MouseEvent<HTMLDivElement>) => {
 			if (isEmpty(get(boxRef, 'current'))) return
 			const { clientX, clientY } = event
-			const { x, y } = boxRef.current!.getBoundingClientRect()
+			const { x: _x, y: _y } = boxRef.current!.getBoundingClientRect()
 			const plus = document.createElement('span')
 			plus.innerText = '+'
 			plus.style.position = 'absolute'

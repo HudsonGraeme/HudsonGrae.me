@@ -39,7 +39,7 @@ const Card = ({ title, start, end, description, feature }: ICardProps) => {
 	const [imgKey, setImgKey] = useState(uniqueId())
 	let renderedDescription: ReactNode = description
 	if (typeof description === 'string') {
-		renderedDescription = <Text>{description}</Text>
+		renderedDescription = <Text fontSize='xs'>{description}</Text>
 	}
 
 	return (
